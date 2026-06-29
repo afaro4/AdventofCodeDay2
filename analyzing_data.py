@@ -5,19 +5,14 @@ with open('unusual_data.txt') as f:
         if line.strip(): # skipping any blank reports in the data
             unusual_data.append(list(map(int, line.split()))) # appending each report to ful list
 
-# Checking each report safe or unsafe
-#sample_data = unusual_data[0:3]
+# Checking each report safe or unsaf
 num_safe_reports = 0 # initiating counter for number of safe reports
 for report in unusual_data:
-    print(report)
     for i in range(0, len(report)):
-        print("INDEX:"+ str(i))
         if (i == len(report)-1): # if its at the last level then it is safe
-            print("SAFE")
             num_safe_reports += 1
         else: # if we are not at the last level of the report
             difference = report[i] - report[i+1]
-            print(abs(difference))
             # check if numbers are increasing or decreasing
             if i == 0:
                 if difference < 0:
@@ -34,7 +29,6 @@ for report in unusual_data:
             if 0 < abs(difference) < 4: 
                 continue
             else:
-                print("UNSAFE")
                 break
 
 # Printing answer
